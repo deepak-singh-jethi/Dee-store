@@ -1,22 +1,16 @@
 import React, { useRef, useEffect } from "react";
-import {
-  motion,
-  useAnimation,
-  AnimatePresence,
-  useInView,
-} from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 
-function ScrollFramer({ children }) {
+function ScrollBottomToTop({ children, duration = 0.8 }) {
   const ref = useRef();
   const isInView = useInView(ref, { once: true });
-
   const mainControl = useAnimation();
 
   useEffect(() => {
     if (isInView) {
       mainControl.start("visible");
     }
-  }, [isInView]);
+  }, [isInView, mainControl]);
 
   return (
     <div ref={ref}>
@@ -27,11 +21,11 @@ function ScrollFramer({ children }) {
         }}
         initial="hidden"
         animate={mainControl}
-        transition={{ duration: 0.5, delay: 0.2 }}>
+        transition={{ duration, delay: 0.2 }}>
         {children}
       </motion.div>
     </div>
   );
 }
 
-export default ScrollFramer;
+export default ScrollBottomToTop;

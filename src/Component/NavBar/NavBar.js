@@ -75,7 +75,7 @@ const NavBar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "-100%" }}
             transition={{ duration: 0.5 }}
-            className="md:hidden fixed inset-0 bg-gray-800 bg-opacity-90 p-4">
+            className="md:hidden fixed inset-0 bg-gray-800  p-4">
             {/* Mobile menu items */}
             <motion.ul className="text-center flex flex-col mt-10">
               <NavLink

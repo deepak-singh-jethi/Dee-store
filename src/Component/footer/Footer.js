@@ -1,4 +1,5 @@
 import React from "react";
+import ScrollFramer from "../../FramerAnimation/ScrollFramer";
 
 const Footer = () => {
   return (
@@ -81,10 +82,11 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-gray-600 w-full my-8"></div>
-
-      <p className="text-center text-sm md:text-base lg:text-lg">
-        &copy; 2024 Dee-store Website. All rights reserved.
-      </p>
+      <ScrollFramer>
+        <p className="text-center text-sm md:text-base lg:text-lg">
+          &copy; 2024 Dee-store Website. All rights reserved.
+        </p>
+      </ScrollFramer>
     </footer>
   );
 };

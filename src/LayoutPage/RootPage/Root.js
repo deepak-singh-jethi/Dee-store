@@ -5,11 +5,11 @@ import { Outlet } from "react-router-dom";
 
 function RootLayout() {
   return (
-    <>
+    <div className="w-screen">
       <NavBarLayout />
       <Outlet />
       <FooterLayout />
-    </>
+    </div>
   );
 }
 
