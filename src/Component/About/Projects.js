@@ -28,27 +28,19 @@ const ProjectsSection = () => {
       githubLink: "https://github.com/yourusername/project3",
       imageUrl: "https://via.placeholder.com/400x400",
     },
-    {
-      title: "Project 4",
-      description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
-      details: "Responsive website created using HTML, CSS, and JavaScript.",
-      githubLink: "https://github.com/yourusername/project4",
-      imageUrl: "https://via.placeholder.com/400x400",
-    },
   ];
 
   return (
     <ScrollBottomToTop>
-      <div className="text-left border-2  rounded-lg p-2 ">
-        <h3 className="text-3xl font-bold mb-4 text-gray-800 text-center  py-4 sm:py-10 font-mono">
+      <div className="text-left border-2  rounded-lg p-8  bg-slate-900 shadow-xl">
+        <h3 className="text-3xl font-bold mb-4 text-gray-100 text-center py-4 sm:py-8 font-mono">
           Projects
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-10 sm:pb-20">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              className="bg-white p-6 rounded-md shadow-md mb-4"
+              className="bg-white p-6 rounded-md shadow-md "
               whileHover={{
                 scale: 1.01,
                 boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",

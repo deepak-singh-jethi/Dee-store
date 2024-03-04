@@ -18,6 +18,13 @@ const initialState = {
       country: "",
     },
   },
+  loginInfo: {
+    isLoggedIn: false,
+  },
+  status: {
+    isLoading: false,
+    isError: null,
+  },
 };
 
 export const userSlice = createSlice({
@@ -26,10 +33,16 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload;
+      state.loginInfo.isLoggedIn = true;
+      state.status.isError = null;
+      state.status.isLoading = false;
       return state;
     },
     clearUser: (state) => {
       state.user = initialState.user;
+      state.loginInfo.isLoggedIn = false;
+      state.status.isError = null;
+      state.status.isLoading = false;
       return state;
     },
   },

@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* offer coards
+ */
+
+ /* OfferCard.css */
+ .offer-card {
+     position: relative;
+     overflow: hidden;
+ }
+
+ .offer-card::before {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: -100%;
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+     transition: left 0.3s ease-in-out;
+     pointer-events: none;
+ }
+
+ .offer-card:hover::before {
+     left: 100%;
+ }

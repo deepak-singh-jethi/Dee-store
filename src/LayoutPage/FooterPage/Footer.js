@@ -5,9 +5,11 @@ import ScrollBottomToTop from "../../FramerAnimation/ScrollFramer";
 
 function FooterLayout() {
   return (
-    <ScrollBottomToTop>
-      <Footer>FooterLayout</Footer>
-    </ScrollBottomToTop>
+    <div className="mt-14">
+      <ScrollBottomToTop>
+        <Footer>FooterLayout</Footer>
+      </ScrollBottomToTop>
+    </div>
   );
 }
 

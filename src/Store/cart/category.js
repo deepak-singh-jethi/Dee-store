@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  category: null,
+  category: [],
+  statusOfAction: {
+    status: "",
+    message: "",
+  },
 };
 export const categorySlice = createSlice({
   name: "category",
@@ -9,7 +13,12 @@ export const categorySlice = createSlice({
   reducers: {
     setCategory: (state, action) => {
       state.category = action.payload;
-      console.log(state.category);
+      return state;
+    },
+    setStatus: (state, action) => {
+      state.statusOfAction.status = action.payload.status;
+      state.statusOfAction.message = action.payload.message;
+
       return state;
     },
   },

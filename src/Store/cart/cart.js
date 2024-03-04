@@ -4,6 +4,10 @@ const initialState = {
   items: [],
   totalQuantity: 0,
   totalValue: 0,
+  status: {
+    isLoading: false,
+    isError: false,
+  },
 };
 export const cartSlice = createSlice({
   name: "cart",
@@ -14,6 +18,8 @@ export const cartSlice = createSlice({
       const newItem = action.payload;
       state.totalQuantity++;
       state.totalValue += newItem.price;
+      state.status.isLoading = false;
+      state.status.isError = false;
       const existingItem = state.items.find((item) => item.id === newItemId);
       if (!existingItem) {
         state.items.push({

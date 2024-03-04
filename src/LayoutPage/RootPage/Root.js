@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBarLayout from "../NavBarPage/NavBar";
 import FooterLayout from "../FooterPage/Footer";
 import { Outlet } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchCategories } from "../../Store/cart/actions";
+import { fetchHeadingProducts } from "../../Store/products/Actions/headingProductsActions";
 
 function RootLayout() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+    dispatch(fetchHeadingProducts());
+  }, [dispatch]);
+
   return (
-    <div className="w-screen">
+    <div className=" bg-white font-mono">
       <NavBarLayout />
       <Outlet />
       <FooterLayout />

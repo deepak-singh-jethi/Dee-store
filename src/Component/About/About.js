@@ -3,6 +3,7 @@ import ScrollBottomToTop from "../../FramerAnimation/ScrollFramer";
 import { motion } from "framer-motion";
 import SkillsSection from "./SkillsSection";
 import ProjectsSection from "./Projects";
+import { SocialIcon } from "react-social-icons";
 
 const AnimatedButton = ({ text, onClick }) => {
   return (
@@ -39,7 +40,9 @@ const AboutMePage = () => {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}>
-        <h1 className="text-4xl font-bold text-white text-center">About Me</h1>
+        <h1 className="text-4xl font-bold text-white text-center font-mono">
+          About Me
+        </h1>
       </motion.div>
 
       <div className="text-center sm:px-14  sm:py-20">
@@ -59,7 +62,7 @@ const AboutMePage = () => {
         </ScrollBottomToTop>
 
         <ScrollBottomToTop>
-          <div className="text-center my-8">
+          <div className="text-center my-8 relative">
             <h2 className="text-4xl font-extrabold text-gray-900 mb-4 font-mono">
               Hi, I'm Deepak Singh Jethi
             </h2>
@@ -67,12 +70,13 @@ const AboutMePage = () => {
               Frontend Developer passionate about crafting elegant solutions for
               users. Let's build something incredible together.
             </p>
+            <div className="absolute top-[-20px] left-[-20px] border-l-4 border-t-4 border-cyan-800 w-1/4 h-full "></div>
           </div>
         </ScrollBottomToTop>
 
         {/* About Me Text */}
         <ScrollBottomToTop>
-          <p className="text-slate-600 mb-14 text-base font-mono">
+          <p className="text-slate-600 mb-14 text-base font-mono ">
             I am a passionate and skilled frontend developer with a focus on
             creating delightful and user-friendly web experiences. My expertise
             lies in translating design concepts into responsive and interactive
@@ -81,9 +85,10 @@ const AboutMePage = () => {
         </ScrollBottomToTop>
 
         <ScrollBottomToTop duration="2">
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-10 relative ">
             <AnimatedButton text="Download CV" onClick={handleDownloadCV} />
             <AnimatedButton text="Contact Info" onClick={handleContactInfo} />
+            <div className="absolute bottom-[-10px] right-[-10px] border-b-4 border-r-4 border-cyan-800 w-1/4 h-[200px] sm:h-[100px] "></div>
           </div>
         </ScrollBottomToTop>
 
@@ -93,7 +98,26 @@ const AboutMePage = () => {
         {/* Projects Section */}
         <ProjectsSection />
 
-        {/* Buttons Section */}
+        {/* Social Section */}
+        <ScrollBottomToTop duration="1.5">
+          <div className="flex justify-center gap-6 mt-24">
+            <p className="text-gray-600 hover:text-gray-800">
+              <SocialIcon url="https://linkedin.com" />
+            </p>
+            <p className="text-gray-600 hover:text-gray-800">
+              <SocialIcon url="https://instagram.com" />
+            </p>
+            <p className="text-gray-600 hover:text-gray-800">
+              <SocialIcon url="https://twitter.com" />
+            </p>
+            <p className="text-gray-600 hover:text-gray-800">
+              <SocialIcon url="https://github.com" />
+            </p>
+            <p className="text-gray-600 hover:text-gray-800">
+              <i className="fab fa-behance"></i>
+            </p>
+          </div>
+        </ScrollBottomToTop>
       </div>
     </motion.div>
   );
