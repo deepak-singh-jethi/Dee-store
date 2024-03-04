@@ -28,3 +28,29 @@
  .offer-card:hover::before {
      left: 100%;
  }
+.mainBorderMaker {
+    position: relative;
+}
+
+/* Top right corner frame */
+.mainBorderMaker::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    height: 200px;
+    width: 50%;
+    border-top: 4px solid black;
+    border-right: 4px solid black;
+}
+.mainBorderMaker::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    height: 200px;
+    width: 50%;
+    border-left: 4px solid black;
+    border-bottom: 4px solid black;
+}
+

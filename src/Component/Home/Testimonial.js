@@ -9,15 +9,15 @@ const starGenerator = (rating) => {
     stars.push(
       <span key={i}>
         <svg
-          class={`${i < rating ? "text-yellow-600" : "text-gray-800"}`}
+          className={`${i < rating ? "text-yellow-600" : "text-gray-800"}`}
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          strokeWidth="2"
           stroke="currentColor"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round">
+          strokeLinecap="round"
+          strokeLinejoin="round">
           {" "}
           <path stroke="none" d="M0 0h24v24H0z" />{" "}
           <path d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" />
@@ -39,6 +39,7 @@ const Testimonial = () => {
   }, [index]);
 
   const nextLeft = () => {
+    console.log(true);
     setIndex((prevIndex) => {
       if (prevIndex === 0) {
         return customerTestimonials.length - 1;
@@ -47,6 +48,7 @@ const Testimonial = () => {
     });
   };
   const nextRight = () => {
+    console.log(true);
     setIndex((prevIndex) => {
       if (prevIndex === customerTestimonials.length - 1) {
         return 0;
@@ -58,37 +60,34 @@ const Testimonial = () => {
   const { image, name, comment, rating } = customerTestimonials[index];
 
   return (
-    <div className="container mx-auto  mt-24  p-3 bg-slate-50 rounded-xl lg:p-10 text-center">
-      <h1 className="text-3xl font-bold my-14">Testimonial</h1>
+    <div
+      className="container mx-auto  mt-14  p-3 bg-slate-50 rounded-xl lg:p-10 text-center mainBorderMaker"
+      style={{
+        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
+      }}>
       <div className="flex flex-col sm:flex-row px-4 py-4 h-fit">
-        <div className="w-full sm:w-1/2 h-[400px] bg-sky-600 flex justify-center items-center relative">
+        <div
+          className="w-full sm:w-1/2 h-[400px] bg-sky-600 flex flex-col justify-center items-center relative"
+          style={{
+            borderRadius: "18% 82% 67% 33% / 50% 45% 55% 50%  ",
+            backgroundColor: "rgba(100, 160, 50, 0.8)",
+          }}>
           <span className="text-2xl font-extrabold px-40 ">
             What our customers are saying!
           </span>
-          <p
-            style={{
-              position: "absolute",
-              bottom: "0",
-              left: "50px",
-            }}>
-            <button className="text-5xl" onClick={nextLeft}>
+
+          <div className="w-full flex justify-between px-4">
+            <button className="text-5xl cursor-pointer " onClick={nextLeft}>
               &larr;
             </button>
-          </p>
-          <p
-            style={{
-              position: "absolute",
-              bottom: "0",
-              right: "50px",
-            }}>
-            <button className="text-5xl" onClick={nextRight}>
+            <button className="text-5xl cursor-pointer " onClick={nextRight}>
               &rarr;
             </button>
-          </p>
+          </div>
         </div>
         <motion.div
           key={name}
-          className="w-full sm:w-1/2 h-[400px] flex  flex-col gap-4 justify-center items-center p-8"
+          className="w-full mt-10 sm:m-0 sm:w-1/2 h-[430px] flex  flex-col gap-4 justify-center items-center p-8"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}

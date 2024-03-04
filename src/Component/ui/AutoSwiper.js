@@ -6,11 +6,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 export default function AutoSwiper({ items }) {
-  const progressCircle = useRef(null);
   const progressContent = useRef(null);
 
   const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
@@ -60,9 +58,6 @@ export default function AutoSwiper({ items }) {
             </SwiperSlide>
           ))}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center">
-          <svg viewBox="" ref={progressCircle} className="w-6 h-6 mr-2">
-            <circle className="text-white" fill="none" strokeWidth="3"></circle>
-          </svg>
           <span ref={progressContent} className="text-white text-sm"></span>
         </div>
       </Swiper>

@@ -15,7 +15,7 @@ const Home = () => {
   console.log(category);
 
   return (
-    <main className="mx-3 sm:mx-10 lg:mx-12 xl:mx-24  sm:my-20 my-14">
+    <main className="mx-3 sm:mx-10 lg:mx-12 xl:mx-24 sm:my-20 my-14">
       <article className="my-6 mx-auto shadow-xl text-center w-full sm:w-2/3  ">
         <ScrollBottomToTop>
           <h2 className="text-center mt-6 text-3xl font-extrabold">
@@ -29,11 +29,17 @@ const Home = () => {
           <AutoSwiper items={headingProducts}></AutoSwiper>
         </ScrollBottomToTop>
       </article>
+
       <Offers />
-      <ScrollBottomToTop duration="1">
-        <div className="my-6 mx-auto shadow-xl text-center w-full sm:w-2/3  h-2 bg-black" />
+      <ScrollBottomToTop duration="2">
+        <div className="my-6 mx-auto shadow-xl text-center w-full   h-2 bg-black" />
       </ScrollBottomToTop>
-      <ScrollBottomToTop duration="1">
+      <ScrollBottomToTop duration="2">
+        <h1 className="text-4xl font-bold mt-10 lg:mt-32 st:my-14 text-center">
+          Testimonial
+        </h1>
+      </ScrollBottomToTop>
+      <ScrollBottomToTop duration="0.5">
         <Testimonial />
       </ScrollBottomToTop>
     </main>

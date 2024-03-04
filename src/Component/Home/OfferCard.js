@@ -9,7 +9,7 @@ const OfferCard = ({ title, description, image }) => {
       className="flex flex-col items-center min-w-[280px] max-w-[320px] h-[450px] mx-auto overflow-hidden rounded-lg shadow-lg my-4  offer-card bg-slate-200"
       initial={{ y: -100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.4 }}
       whileHover={{ backgroundColor: "Highlight" }}>
       <img className="w-full h-48 object-cover mb-4" src={image} alt="Offer" />
       <div className="p-4">
