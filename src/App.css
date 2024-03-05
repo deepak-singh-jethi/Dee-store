@@ -28,12 +28,12 @@
  .offer-card:hover::before {
      left: 100%;
  }
-.mainBorderMaker {
+.mainBorderMaker,.offers-conatiner {
     position: relative;
 }
 
 /* Top right corner frame */
-.mainBorderMaker::before {
+.mainBorderMaker::before,.offers-conatiner::before {
     content: "";
     position: absolute;
     top: -10px;
@@ -43,7 +43,7 @@
     border-top: 4px solid black;
     border-right: 4px solid black;
 }
-.mainBorderMaker::after {
+.mainBorderMaker::after,.offers-conatiner:after {
     content: "";
     position: absolute;
     bottom: -10px;

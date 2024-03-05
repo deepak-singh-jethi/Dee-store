@@ -15,7 +15,7 @@ function RootLayout() {
   }, [dispatch]);
 
   return (
-    <div className=" bg-white font-mono">
+    <div className=" bg-white font-mono w-screen overflow-hidden">
       <NavBarLayout />
       <Outlet />
       <FooterLayout />

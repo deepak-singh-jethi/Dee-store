@@ -58,12 +58,6 @@ const NavBar = () => {
               onClick={closeMenu}>
               About
             </NavLink>
-            <NavLink
-              to="cart"
-              className="cursor-pointer py-2 text-2xl font-mono"
-              onClick={closeMenu}>
-              Cart
-            </NavLink>
           </div>
         </ul>
       </nav>
@@ -95,12 +89,6 @@ const NavBar = () => {
                 className="py-2 text-xl mt-6 border rounded-lg border-cyan-50 font-mono"
                 onClick={closeMenu}>
                 About
-              </NavLink>
-              <NavLink
-                to="cart"
-                className="py-2 text-xl mt-6 border rounded-lg border-cyan-50 font-mono"
-                onClick={closeMenu}>
-                Cart
               </NavLink>
             </motion.ul>
             {/* Close button for mobile screens */}

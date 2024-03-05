@@ -67,20 +67,25 @@ const Testimonial = () => {
       }}>
       <div className="flex flex-col sm:flex-row px-4 py-4 h-fit">
         <div
-          className="w-full sm:w-1/2 h-[400px] bg-sky-600 flex flex-col justify-center items-center relative"
+          className="w-full sm:w-1/2 h-[360px] sm:h-[400px] bg-sky-600 flex flex-col justify-center items-center relative"
           style={{
-            borderRadius: "18% 82% 67% 33% / 50% 45% 55% 50%  ",
-            backgroundColor: "rgba(100, 160, 50, 0.8)",
+            borderRadius: "28% 70% 67% 33% / 50% 45% 55% 50%  ",
+            backgroundImage:
+              "linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12)",
           }}>
-          <span className="text-2xl font-extrabold px-40 ">
+          <span className="text-4xl font-extrabold px-40  text-white">
             What our customers are saying!
           </span>
 
-          <div className="w-full flex justify-between px-4">
-            <button className="text-5xl cursor-pointer " onClick={nextLeft}>
+          <div className="w-full flex justify-between px-10 text-white">
+            <button
+              className="text-5xl sm:text-9xl cursor-pointer "
+              onClick={nextLeft}>
               &larr;
             </button>
-            <button className="text-5xl cursor-pointer " onClick={nextRight}>
+            <button
+              className="text-5xl sm:text-9xl cursor-pointer "
+              onClick={nextRight}>
               &rarr;
             </button>
           </div>
