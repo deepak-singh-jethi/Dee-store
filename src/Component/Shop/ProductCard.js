@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const ProductCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
@@ -16,7 +17,9 @@ const ProductCard = ({ product }) => {
   // console.log("shoppping cart");
 
   return (
-    <div className="bg-white p-4 border rounded-md shadow-md h-[450px] flex flex-col justify-between">
+    <motion.div
+      layout
+      className="bg-white p-4 border rounded-md shadow-md h-[450px] flex flex-col justify-between">
       <div className="w-full h-2/3 overflow-hidden">
         <img
           src={product.image}
@@ -49,7 +52,7 @@ const ProductCard = ({ product }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import NavBarLayout from "../NavBarPage/NavBar";
+import NavBarLayout from "../NavBarPage/NAvBar";
 import FooterLayout from "../FooterPage/Footer";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";

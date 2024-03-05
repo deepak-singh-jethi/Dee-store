@@ -47,12 +47,16 @@ const Shop = ({ products }) => {
         <LargeScreenFilter setFilter={setFilter} filter={filter} />
 
         <motion.div
+          layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 "
           style={{
             flex: 6,
             flexGrow: "grow",
             overflowY: "scroll",
-          }}>
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 3 }}>
           {filteredProducts &&
             filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
