@@ -48,58 +48,70 @@ const SkillsSection = () => {
   };
 
   return (
-    <AnimatePresence>
-      <ScrollBottomToTop duration="2">
-        <div className="my-20 border-2  rounded-lg shadow-lg px-3 sm:px-14 py-8 sm:py-20">
-          <h3 className="text-3xl font-bold mb-10 text-gray-800 text-center font-mono ">
-            My Skills
-          </h3>
-          <ul className="list-none flex  flex-wrap justify-around mb-8 items-center gap-8">
-            {skills.map((skill) => (
-              <motion.li
-                key={skill.name}
-                className="flex items-center mb-2"
-                initial={{ y: 0 }}
-                whileHover={{ y: 4 }}
-                transition={{ duration: 0.6 }}
-                onHoverStart={() => {
-                  handleHoverOver(skill.rating);
-                }}
-                onHoverEnd={handleHoverOut}>
-                <img
-                  className="h-[30px] w-[30px]"
-                  src={skill.imgURL}
-                  alt={skill.name}
-                />
+    <ScrollBottomToTop duration="2">
+      <div className="my-20 border-2  rounded-lg shadow-lg px-3 sm:px-14 py-8 sm:py-20">
+        <h3 className="text-3xl font-bold mb-10 text-gray-800 text-center font-mono ">
+          My Skills
+        </h3>
+        <ul className="list-none flex  flex-wrap justify-around mb-8 items-center gap-8">
+          {skills.map((skill) => (
+            <motion.li
+              key={skill.name}
+              className="flex items-center mb-2"
+              initial={{ y: 0 }}
+              whileHover={{ y: 4 }}
+              transition={{ duration: 0.6 }}
+              onHoverStart={() => {
+                handleHoverOver(skill.rating);
+              }}
+              onHoverEnd={handleHoverOut}>
+              <img
+                className="h-[30px] w-[30px]"
+                src={skill.imgURL}
+                alt={skill.name}
+              />
 
-                <span className=" px-2 text-xl">{skill.name}</span>
-              </motion.li>
-            ))}
-          </ul>
+              <span className=" px-2 text-xl">{skill.name}</span>
+            </motion.li>
+          ))}
+        </ul>
 
-          <div className=" h-[15px] w-[100%] overflow-hidden rounded-lg">
+        <div className=" h-[15px] w-[100%] overflow-hidden rounded-lg">
+          <AnimatePresence>
             {selectedSkill && (
               <motion.div
-                initial={{ x: "-100%", opacity: 0 }}
-                animate={{ x: "0%", opacity: 1 }}
-                exit={{ x: "-100%", opacity: 0 }}
-                transition={{ duration: 0.4 }}
+                key={selectedSkill * 40}
+                initial={{ x: "-30%", opacity: 0 }}
+                animate={{
+                  x: "0%",
+                  opacity: 1,
+                  transition: { duration: 1, delay: 0.2 },
+                }}
+                exit={{ x: "-30%", opacity: 0, transition: { duration: 0.3 } }}
                 className="relative bg-red-300 h-[15px] w-[100%] rounded-lg">
                 <motion.div
-                  initial={{ x: "-100%", opacity: 0 }}
-                  animate={{ x: "0%", opacity: 1 }}
-                  exit={{ x: "-100%", opacity: 0 }}
-                  transition={{ duration: 1 }}
+                  key={selectedSkill * 50}
+                  initial={{ x: "-50%", opacity: 0 }}
+                  animate={{
+                    x: "0%",
+                    opacity: 1,
+                    transition: { duration: 0.4, delay: 0.2 },
+                  }}
+                  exit={{
+                    x: "-50%",
+                    opacity: 0,
+                    transition: { duration: 0.3 },
+                  }}
                   className="absolute top-0 left-0  h-[15px] bg-gray-700 opacity-50 rounded-lg"
                   style={{
                     width: `${selectedSkill * 10}%`,
                   }}></motion.div>
               </motion.div>
             )}
-          </div>
+          </AnimatePresence>
         </div>
-      </ScrollBottomToTop>
-    </AnimatePresence>
+      </div>
+    </ScrollBottomToTop>
   );
 };
 export default SkillsSection;

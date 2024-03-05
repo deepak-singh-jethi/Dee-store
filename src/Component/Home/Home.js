@@ -13,12 +13,11 @@ const Home = () => {
   const { headingProducts, statusOfLoading } = useSelector(
     (state) => state.headingProducts
   );
-  console.log(headingProducts);
 
   return (
-    <main className="mx-3 sm:mx-10 lg:mx-12 xl:mx-24 sm:my-12 my-4">
+    <main className="mx-3 sm:mx-10 lg:mx-12 xl:mx-24 sm:my-14 my-4 ">
       <ScrollBottomToTop>
-        <h2 className="text-center sm:my-14 my-6 text-3xl font-extrabold">
+        <h2 className="text-center sm:my-14 my-6 text-3xl sm:text-5xl font-extrabold pt-24">
           Latest Collection
         </h2>
         {statusOfLoading.status === "loading" && (

@@ -92,3 +92,26 @@ export const customerTestimonials = [
       "https://images.pexels.com/photos/751235/pexels-photo-751235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   },
 ];
+
+export const rating = [
+  {
+    value: 4.5,
+    label: "Above 4.5",
+  },
+  {
+    value: 4,
+    label: "Above 4",
+  },
+  {
+    value: 3.5,
+    label: "Above 3.5",
+  },
+  {
+    value: 3,
+    label: "Above 3",
+  },
+  {
+    value: 2.5,
+    label: "Above 2.5",
+  },
+];

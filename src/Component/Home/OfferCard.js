@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const OfferCard = ({ title, description, image }) => {
   return (
     <motion.div
-      className="flex flex-col items-center min-w-[280px] max-w-[320px] h-[450px] mx-auto overflow-hidden rounded-lg  my-5 sm:my-10  offer-card bg-slate-200"
+      className="flex flex-col items-center min-w-[280px] max-w-[320px] h-[420px] sm:h-[450px] mx-auto overflow-hidden rounded-lg  my-5 sm:my-10  offer-card bg-slate-200"
       initial={{ y: -100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}

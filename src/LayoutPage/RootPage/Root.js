@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchCategories } from "../../Store/cart/actions";
 import { fetchHeadingProducts } from "../../Store/products/Actions/headingProductsActions";
+import { fetchAlProducts } from "../../Store/products/Actions/headingProductsActions";
 
 function RootLayout() {
   const dispatch = useDispatch();
@@ -12,6 +13,8 @@ function RootLayout() {
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchHeadingProducts());
+    dispatch(fetchAlProducts());
+    console.log(true);
   }, [dispatch]);
 
   return (

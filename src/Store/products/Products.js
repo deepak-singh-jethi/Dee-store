@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: null,
-  status: {
-    isLoading: false,
-    isError: false,
+  allProductStatus: {
+    status: "",
+    message: "",
   },
 };
 export const productsSlice = createSlice({
@@ -13,9 +13,13 @@ export const productsSlice = createSlice({
   reducers: {
     setProducts: (state, action) => {
       state.products = action.payload;
-      state.status.isLoading = false;
-      state.status.isError = false;
-      console.log(state.products);
+      state.allProductStatus.status = "";
+      state.allProductStatus.message = "";
+      return state;
+    },
+    setStatus: (state, action) => {
+      state.allProductStatus.status = action.payload.status;
+      state.allProductStatus.message = action.payload.message;
       return state;
     },
   },

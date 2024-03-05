@@ -33,15 +33,15 @@ const ProductSlider = ({ items }) => {
     <AnimatePresence>
       <motion.div
         transition={{ staggerChildren: 0.8 }}
-        className="relative w-full shadow-xl rounded-lg flex flex-col">
+        className="relative w-full shadow-xl rounded-lg flex flex-col ">
         <motion.div
           key={id * 1345}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           exit={{ opacity: 0, x: -100 }}
-          className="flex sm:flex-row flex-col sm:h-[430px] h-[700px] justify-center items-center">
-          <div className="w-full sm:w-[50%] sm:h-[400px] h-[500px]">
+          className="flex sm:flex-row flex-col sm:h-[430px] h-[500px] justify-center items-center">
+          <div className="w-full sm:w-[50%] sm:h-[300px] h-[300px] object-cover">
             <img
               src={image}
               alt=""
@@ -49,10 +49,10 @@ const ProductSlider = ({ items }) => {
             />
           </div>
           <div className="w-full sm:w-[50%] flex flex-col gap-6 justify-center items-center py-1 ">
-            <h1 className="sm:text-2xl text:lg font-bold">
+            <h1 className="sm:text-2xl text:lg font-bold text-center">
               {title.substring(0, 40)}
             </h1>
-            <p className="sm:text-lg text-base">
+            <p className="sm:text-lg text-center">
               {description.substring(0, 58)}
             </p>
             <p className="text-lg font-bold">Price: {price}</p>
@@ -69,14 +69,16 @@ const ProductSlider = ({ items }) => {
           ))}
         </div>
 
-        <div className="flex justify-around items-center p-4">
-          <button className="text-5xl text-blue-600" onClick={handlePrev}>
-            &#9666;
-          </button>
-          <button className="text-5xl text-blue-600" onClick={handleNext}>
-            &#9656;
-          </button>
-        </div>
+        <button
+          className=" absolute left-0 top-[50%] text-5xl text-blue-600"
+          onClick={handlePrev}>
+          &#9666;
+        </button>
+        <button
+          className="absolute right-0 top-[50%] text-5xl text-blue-600"
+          onClick={handleNext}>
+          &#9656;
+        </button>
       </motion.div>
     </AnimatePresence>
   );

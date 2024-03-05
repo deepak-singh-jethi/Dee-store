@@ -30,13 +30,13 @@ const AboutMePage = () => {
 
   return (
     <motion.div
-      className="flex flex-col bg-gray-100 shadow-md rounded-md p-4 sm:p-8 mx-2 sm:mx-4 sm:my-8 my-4"
+      className="flex flex-col bg-gray-100 shadow-md rounded-md p-4 sm:p-8 mx-2 sm:mx-4 sm:my-8 "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}>
       {/* Header Section */}
       <motion.div
-        className="w-full bg-red-500 p-4 rounded-md mb-6"
+        className="w-full bg-red-500 p-2 sm:p-4 rounded-md mb-6 sm:mt-14 mt-20"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}>

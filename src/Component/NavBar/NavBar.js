@@ -15,7 +15,7 @@ const NavBar = () => {
 
   return (
     <motion.header
-      className="bg-gray-800 text-white p-4"
+      className="bg-gray-800 text-white p-4 fixed w-full z-50 "
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
@@ -25,12 +25,7 @@ const NavBar = () => {
           <NavLink to="" className="text-2xl font-bold font-mono">
             Logo
           </NavLink>
-          <li className="">
-            <input
-              type="text"
-              className="border-2 border-cyan-200 p-2 rounded-lg  w-[180px] sm:w-[300px] lg:w-[400px]"
-            />
-          </li>
+
           <li className="md:hidden cursor-pointer" onClick={handleToggleMenu}>
             {isMenuOpen ? (
               <span className="text-2xl">&#10006;</span>

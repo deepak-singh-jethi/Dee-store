@@ -3,7 +3,7 @@ import ScrollFramer from "../../FramerAnimation/ScrollFramer";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8">
+    <footer className="bg-gray-800 text-white py-8 z-40">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <div className="flex flex-col mb-4 md:mb-0 md:pr-8">
           <h2 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">
