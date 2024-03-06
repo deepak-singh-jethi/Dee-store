@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const userToken = localStorage.getItem("token");
+
 const initialState = {
   user: {
     userName: "",
@@ -20,12 +22,16 @@ const initialState = {
   },
   loginInfo: {
     isLoggedIn: false,
+    token: "",
   },
-  status: {
-    isLoading: false,
-    isError: null,
+  userSignUp: {
+    status: "",
+    message: "",
   },
 };
+if (userToken) {
+  initialState.loginInfo.isLoggedIn = true;
+}
 
 export const userSlice = createSlice({
   name: "user",
@@ -33,16 +39,17 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload;
-      state.loginInfo.isLoggedIn = true;
-      state.status.isError = null;
-      state.status.isLoading = false;
       return state;
     },
-    clearUser: (state) => {
-      state.user = initialState.user;
-      state.loginInfo.isLoggedIn = false;
-      state.status.isError = null;
-      state.status.isLoading = false;
+    setStatus: (state, action) => {
+      state.userSignUp.status = action.payload.status;
+      state.userSignUp.message = action.payload.message;
+      return state;
+    },
+    setLoginInfo: (state, action) => {
+      console.log(action.payload);
+      state.loginInfo.isLoggedIn = action.payload.isLoggedIn;
+      state.loginInfo.token = action.payload.token;
       return state;
     },
   },

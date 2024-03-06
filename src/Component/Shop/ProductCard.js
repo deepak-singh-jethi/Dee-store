@@ -1,25 +1,15 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const ProductCard = ({ product }) => {
-  const [quantity, setQuantity] = useState(1);
-
-  const handleIncrement = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  // console.log("shoppping cart");
-
+const ProductCard = ({ product, handleCartAction }) => {
   return (
     <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      whileInView={{ y: [40, 0] }}
       layout
-      className="bg-white p-4 border rounded-md shadow-md h-[450px] flex flex-col justify-between">
+      className="bg-slate-100 p-4 border rounded-md shadow-md h-[300px] sm:h-[350px] flex flex-col justify-between offer-card">
       <div className="w-full h-2/3 overflow-hidden">
         <img
           src={product.image}
@@ -30,24 +20,28 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="flex flex-col mt-4">
-        <h3 className="text-lg font-semibold mb-2 text-center">
+        <h3 className="text-[10px] sm:text-[11px] md:text-[12px] font-semibold mb-2 text-center">
           {product.title}
         </h3>
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-gray-700 ">${product.price.toFixed(2)}</span>
-          <span className="text-teal-500">{product.rating.rate} stars</span>
+        <div className="flex items-center justify-around mb-2">
+          <span className="text-gray-700 text-[10px] sm:text-[11px] md:text-[12px] ">
+            ${product.price.toFixed(2)}
+          </span>
+          <span className="text-teal-500 text-[10px] sm:text-[11px] md:text-[12px]">
+            {product.rating.rate} stars
+          </span>
         </div>
 
         <div className="flex justify-around">
           <button
-            className="bg-teal-500 text-white px-3 py-1 rounded-full mr-2 hover:bg-teal-600"
-            onClick={handleDecrement}>
+            className="bg-teal-500 text-white px-4 py-2 rounded-full mr-2 hover:bg-teal-600 text-[10px] sm:text-[11px] md:text-[12px] cursor-pointer"
+            onClick={() => handleCartAction(product.id, "remove")}>
             -
           </button>
-          <span className="text-gray-700">{quantity}</span>
+          <span className="text-gray-700 text-[10px] sm:text-[11px] md:text-[12px]"></span>
           <button
-            className="bg-teal-500 text-white px-3 py-1 rounded-full ml-2 hover:bg-teal-600"
-            onClick={handleIncrement}>
+            className="bg-teal-500 text-white px-4 py-2 rounded-full ml-2 hover:bg-teal-600 text-[10px] sm:text-[11px] md:text-[12px] cursor-pointer"
+            onClick={() => handleCartAction(product.id, "add")}>
             +
           </button>
         </div>

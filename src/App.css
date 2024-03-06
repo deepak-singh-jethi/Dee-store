@@ -53,4 +53,70 @@
     border-left: 4px solid black;
     border-bottom: 4px solid black;
 }
+/* modal */
+
+#modal{
+position: relative;
+}
+
+
+
+dialog::backdrop {
+   
+    top:0;
+    left: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+dialog {
+    padding: 0;
+    z-index: 2;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    transform: translate(30vw,10vh);
+}
+
+@media only screen and (min-width: 780px) and (max-width: 1000px) {
+    dialog {
+        transform: translate(14vw, 10vh);
+    }
+   
+}
+@media only screen and (min-width: 620px) and (max-width: 779px) {
+    dialog {
+        transform: translate(15vw, 10vh);
+    }
+    .authForm {
+             width: 450px;
+      }
+}
+@media only screen and (min-width: 500px) and (max-width: 620px) {
+    dialog {
+        transform: translate(6vw, 10vh);
+    }
+
+    .authForm {
+        width: 450px;
+    }
+}
+@media only screen and (min-width: 400px) and (max-width: 499px) {
+    dialog {
+        transform: translate(5vw, 10vh);
+    }
+
+    .authForm {
+        width: 380px;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 400px) {
+    dialog {
+        transform: translate(5vw, 10vh);
+    }
+
+    .authForm {
+        width: 310px;
+    }
+}
 

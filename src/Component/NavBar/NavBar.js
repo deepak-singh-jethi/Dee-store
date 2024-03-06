@@ -15,7 +15,7 @@ const NavBar = () => {
 
   return (
     <motion.header
-      className="bg-gray-800 text-white p-4 fixed w-full z-50 "
+      className="bg-gray-800 text-white p-2 fixed w-full z-50 "
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
@@ -65,7 +65,6 @@ const NavBar = () => {
             exit={{ opacity: 0, x: "-100%" }}
             transition={{ duration: 0.5 }}
             className="md:hidden fixed inset-0 bg-gray-800 p-4 z-50">
-            {/* Mobile menu items */}
             <motion.ul className="text-center flex flex-col mt-10">
               <NavLink
                 to="profile"
@@ -86,7 +85,6 @@ const NavBar = () => {
                 About
               </NavLink>
             </motion.ul>
-            {/* Close button for mobile screens */}
             <div
               className="absolute top-4 right-4 cursor-pointer text-2xl text-center"
               onClick={closeMenu}>

@@ -43,25 +43,24 @@ const LargeScreenFilter = ({ setFilter, filter }) => {
 
   return (
     <motion.div
-      className="md:block  hidden relative "
+      className="sm:block hidden relative"
       style={{
         flex: 2,
-        overflowY: "hidden",
+        overflowY: "auto",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2 }}>
-      <div className="bg-white lg:px-8 sm:px-4  ">
+      <div className="bg-white lg:px-8 sm:px-4">
         <input
           type="text"
           placeholder="Search products"
           className="w-full p-2 border border-gray-300 rounded outline-none focus:border-blue-500"
         />
         <div className="mt-4">
-          <h2 className="block text-sm font-medium text-gray-700 mb-2">
+          <h2 className="block text-[15px] font-medium text-gray-700 mb-2">
             Categories
           </h2>
-          {/* Categories filter radio buttons  */}
           <div>
             {category.map((item) => (
               <label className="inline-flex items-center mr-4" key={item}>
@@ -73,15 +72,13 @@ const LargeScreenFilter = ({ setFilter, filter }) => {
                   checked={inputs.category === item}
                   onChange={handleFilterChange}
                 />
-                <span className="ml-2">{item}</span>
+                <span className="ml-2 text-[14px]">{item}</span>
               </label>
             ))}
           </div>
-          {/* rating filter radio buttons  */}
-          <h3 className="block text-sm font-medium text-gray-700 mt-4 mb-2">
+          <h3 className="block text-[15px] font-medium text-gray-700 mt-4 mb-2">
             Rating
           </h3>
-
           <div>
             {rating.map((item) => (
               <label className="inline-flex items-center mr-4" key={item.value}>
@@ -93,11 +90,10 @@ const LargeScreenFilter = ({ setFilter, filter }) => {
                   checked={+inputs.rating === item.value}
                   onChange={handleFilterChange}
                 />
-                <span className="ml-2">{item.label}</span>
+                <span className="ml-2 text-[14px]">{item.label}</span>
               </label>
             ))}
           </div>
-
           <label className="block text-sm font-medium text-gray-700 mt-4 mb-2">
             Price Range
           </label>
@@ -112,15 +108,15 @@ const LargeScreenFilter = ({ setFilter, filter }) => {
               name="price"
               onChange={handleFilterChange}
             />
-            <span className="text-center ">{inputs.price}</span>
+            <span className="text-center">{inputs.price}</span>
           </div>
           <button
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
+            className="mt-4 bg-blue-500 text-white px-4 py-2 mr-5 rounded-full hover:bg-blue-600 text-[14px]"
             onClick={handleSubmit}>
             Apply
           </button>
           <button
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
+            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 text-[14px]"
             onClick={handleClear}>
             Clear
           </button>
