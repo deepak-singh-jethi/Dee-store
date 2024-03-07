@@ -8,8 +8,8 @@ import {
 import RootLayout from "./LayoutPage/RootPage/Root";
 import HomeLayout from "./LayoutPage/HomePage/Home";
 import ShopLayout from "./LayoutPage/ShopPage/Shop";
-import ProfileLayout from "./LayoutPage/ProfilePage/Profile";
 import AboutLayout from "./LayoutPage/AboutPage/About";
+import CartLayout from "./LayoutPage/CartPage/Cart";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,8 +19,9 @@ const router = createBrowserRouter(
       errorElement={<h1>Page not Found..</h1>}>
       <Route index element={<HomeLayout />} />
       <Route path="shop" element={<ShopLayout />} />
-      <Route path="profile" element={<ProfileLayout />} />
+
       <Route path="about" element={<AboutLayout />} />
+      <Route path="cart" element={<CartLayout />} />
     </Route>
   )
 );

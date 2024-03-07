@@ -1,7 +1,26 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import cartActions from "../../Store/cart/cart";
 
-const ProductCard = ({ product, handleCartAction }) => {
+const ProductCard = ({ product, handleModal, isLoggedIn }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (product) => {
+    if (!isLoggedIn) {
+      handleModal();
+      return;
+    }
+    dispatch(cartActions.addItemToCart(product));
+  };
+
+  const handleRemoveFromCart = (product) => {
+    if (!isLoggedIn) {
+      handleModal();
+      return;
+    }
+    dispatch(cartActions.removeItemFromCart(product));
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,13 +54,13 @@ const ProductCard = ({ product, handleCartAction }) => {
         <div className="flex justify-around">
           <button
             className="bg-teal-500 text-white px-4 py-2 rounded-full mr-2 hover:bg-teal-600 text-[10px] sm:text-[11px] md:text-[12px] cursor-pointer"
-            onClick={() => handleCartAction(product.id, "remove")}>
+            onClick={() => handleRemoveFromCart(product)}>
             -
           </button>
           <span className="text-gray-700 text-[10px] sm:text-[11px] md:text-[12px]"></span>
           <button
             className="bg-teal-500 text-white px-4 py-2 rounded-full ml-2 hover:bg-teal-600 text-[10px] sm:text-[11px] md:text-[12px] cursor-pointer"
-            onClick={() => handleCartAction(product.id, "add")}>
+            onClick={() => handleAddToCart(product)}>
             +
           </button>
         </div>

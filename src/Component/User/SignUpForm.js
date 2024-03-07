@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { signUpUser } from "../../Store/user/userActions";
 import { useDispatch } from "react-redux";
+
 const initialFormData = {
   userName: "",
   email: "",
@@ -23,6 +24,11 @@ const initialFormData = {
 const SignUpForm = ({ changeAuthStatus }) => {
   const [formData, setFormData] = useState(initialFormData);
   const [formStep, setFormStep] = useState(1);
+  const [passwordError, setPasswordError] = useState({
+    passwordType: "",
+    errorType: "",
+  });
+
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -47,6 +53,26 @@ const SignUpForm = ({ changeAuthStatus }) => {
     });
   };
 
+  const handlError = (e) => {
+    const { name, value } = e.target;
+    if (name === "confirmPassword" && formData.password !== value) {
+      setPasswordError({
+        passwordType: "secondary",
+        errorType: "match",
+      });
+    } else if (name === "password" && value.length < 8) {
+      setPasswordError({
+        passwordType: "main",
+        errorType: "length",
+      });
+    } else {
+      setPasswordError({
+        passwordType: "",
+        errorType: "",
+      });
+    }
+  };
+
   const handleSubmitOfButton1 = (e) => {
     e.preventDefault();
     if (formStep === 1) {
@@ -56,10 +82,22 @@ const SignUpForm = ({ changeAuthStatus }) => {
       return;
     }
   };
+
   const handleSubmitOfButton2 = (e) => {
     e.preventDefault();
     dispatch(signUpUser(formData));
     changeAuthStatus();
+  };
+
+  const generateErrorMessage = (errorType) => {
+    switch (errorType) {
+      case "length":
+        return "Password must be at least 8 characters long";
+      case "match":
+        return "Passwords must match";
+      default:
+        return "";
+    }
   };
 
   return (
@@ -104,9 +142,16 @@ const SignUpForm = ({ changeAuthStatus }) => {
               name="password"
               value={formData.password}
               onChange={handleChange}
+              onBlur={handlError}
               required
               className="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             />
+            {passwordError.passwordType === "main" &&
+              passwordError.errorType === "length" && (
+                <p className="text-red-500">
+                  {generateErrorMessage(passwordError.errorType)}
+                </p>
+              )}
           </div>
 
           <div className="mb-4">
@@ -118,9 +163,16 @@ const SignUpForm = ({ changeAuthStatus }) => {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
+              onBlur={handlError}
               required
               className="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             />
+            {passwordError.passwordType === "secondary" &&
+              passwordError.errorType === "match" && (
+                <p className="text-red-500">
+                  {generateErrorMessage(passwordError.errorType)}
+                </p>
+              )}
           </div>
         </>
       )}
@@ -205,6 +257,7 @@ const SignUpForm = ({ changeAuthStatus }) => {
       <div className="flex items-center justify-between mt-4">
         <button
           type={formStep === 1 ? "submit" : "button"}
+          disabled={passwordError.errorType}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           onClick={handleSubmitOfButton1}>
           {formStep === 1 ? "Next" : "Previous"}

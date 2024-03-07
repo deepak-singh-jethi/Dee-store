@@ -4,48 +4,42 @@ const initialState = {
   items: [],
   totalQuantity: 0,
   totalValue: 0,
-  status: {
-    isLoading: false,
-    isError: false,
-  },
 };
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addItemToCart(state, action) {
+      console.log(action.payload);
+      state.totalQuantity += 1;
+      state.totalValue += action.payload.price;
       const newItemId = action.payload.id;
-      const newItem = action.payload;
-      state.totalQuantity++;
-      state.totalValue += newItem.price;
-      state.status.isLoading = false;
-      state.status.isError = false;
-      const existingItem = state.items.find((item) => item.id === newItemId);
-      if (!existingItem) {
+      const itemExist = state.items.find((item) => item.id === newItemId);
+      if (!itemExist) {
         state.items.push({
-          id: newItemId,
-          title: newItem.title,
-          price: newItem.price,
+          ...action.payload,
           quantity: 1,
-          totalPrice: newItem.price,
-          image: newItem.image,
+          price: action.payload.price,
         });
       } else {
-        existingItem.quantity++;
-        existingItem.totalPrice += newItem.price;
+        itemExist.quantity += 1;
+        itemExist.price += action.payload.price;
       }
       return state;
     },
     removeItemFromCart(state, action) {
-      const id = action.payload;
-      const existingItem = state.items.find((item) => item.id === id);
-      state.totalQuantity--;
-      state.totalValue -= existingItem.price;
-      if (existingItem.quantity === 1) {
-        state.items = state.items.filter((item) => item.id !== id);
-      } else {
-        existingItem.quantity--;
-        existingItem.totalPrice -= existingItem.price;
+      const itemId = action.payload.id;
+
+      const itemExist = state.items.find((item) => item.id === itemId);
+      if (itemExist) {
+        state.totalQuantity -= 1;
+        state.totalValue -= action.payload.price;
+        if (itemExist.quantity === 1) {
+          state.items = state.items.filter((item) => item.id !== itemId);
+        } else {
+          itemExist.quantity -= 1;
+          itemExist.price -= itemExist.price;
+        }
       }
       return state;
     },

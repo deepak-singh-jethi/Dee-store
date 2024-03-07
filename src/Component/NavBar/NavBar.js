@@ -36,16 +36,16 @@ const NavBar = () => {
           {/* Additional menu items and close button for medium and larger screens */}
           <div className="hidden md:flex items-center w-1/2 justify-around">
             <NavLink
-              to="profile"
-              className="cursor-pointer py-2 text-2xl hover:bg-slate-500 font-mono"
-              onClick={closeMenu}>
-              Profile
-            </NavLink>
-            <NavLink
               to="shop"
               className="cursor-pointer py-2 text-2xl font-mono"
               onClick={closeMenu}>
               Shop
+            </NavLink>
+            <NavLink
+              to="cart"
+              className="cursor-pointer py-2 text-2xl hover:bg-slate-500 font-mono"
+              onClick={closeMenu}>
+              Cart
             </NavLink>
             <NavLink
               to="about"
@@ -67,16 +67,16 @@ const NavBar = () => {
             className="md:hidden fixed inset-0 bg-gray-800 p-4 z-50">
             <motion.ul className="text-center flex flex-col mt-10">
               <NavLink
-                to="profile"
-                className="py-2 text-xl mt-6 border rounded-lg border-cyan-50 font-mono"
-                onClick={closeMenu}>
-                Profile
-              </NavLink>
-              <NavLink
                 to="shop"
                 className="py-2 text-xl mt-6 border rounded-lg border-cyan-50 font-mono"
                 onClick={closeMenu}>
                 Shop
+              </NavLink>
+              <NavLink
+                to="cart"
+                className="py-2 text-xl mt-6 border rounded-lg border-cyan-50 font-mono"
+                onClick={closeMenu}>
+                Cart
               </NavLink>
               <NavLink
                 to="about"

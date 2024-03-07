@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { rating } from "../../Store/data";
 import { AnimatePresence, motion } from "framer-motion";
 
-const SmallScreenFilter = ({ setFilter, filter }) => {
+const SmallScreenFilter = ({ setFilter, filter, setSearchInput }) => {
   const { category } = useSelector((state) => state.category);
   const [isFilterOpen, setISFilterOpen] = useState(false);
 
@@ -38,6 +38,9 @@ const SmallScreenFilter = ({ setFilter, filter }) => {
       category: "All",
     });
   };
+  const handleSearch = (e) => {
+    setSearchInput(e.target.value);
+  };
 
   return (
     <div className="relative block md:hidden mb-4">
@@ -46,6 +49,7 @@ const SmallScreenFilter = ({ setFilter, filter }) => {
           type="text"
           placeholder="Search products"
           className="w-4/5 p-2  border border-gray-300 rounded outline-none focus:border-blue-500 h-[14px]"
+          onChange={handleSearch}
         />
         <button
           onClick={toggleFilter}

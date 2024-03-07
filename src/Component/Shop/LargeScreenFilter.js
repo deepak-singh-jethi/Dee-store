@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { rating } from "../../Store/data";
 import { motion } from "framer-motion";
 
-const LargeScreenFilter = ({ setFilter, filter }) => {
+const LargeScreenFilter = ({ setFilter, filter, setSearchInput }) => {
   const { category } = useSelector((state) => state.category);
 
   const [inputs, setInputs] = useState({
@@ -41,6 +41,10 @@ const LargeScreenFilter = ({ setFilter, filter }) => {
     });
   };
 
+  const handleUserSearchInput = (e) => {
+    setSearchInput(e.target.value);
+  };
+
   return (
     <motion.div
       className="sm:block hidden relative"
@@ -55,6 +59,7 @@ const LargeScreenFilter = ({ setFilter, filter }) => {
         <input
           type="text"
           placeholder="Search products"
+          onChange={handleUserSearchInput}
           className="w-full p-2 border border-gray-300 rounded outline-none focus:border-blue-500"
         />
         <div className="mt-4">

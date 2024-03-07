@@ -8,6 +8,7 @@ import AuthForm from "../Modal/AuthForm";
 
 const Shop = ({ products }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [searchInput, setSearchInput] = useState("");
   const [filter, setFilter] = useState({
     category: "All",
     price: 1,
@@ -23,8 +24,7 @@ const Shop = ({ products }) => {
     }
   }, [isLoggedIn]);
 
-  const handleCartAction = (action, id) => {
-    console.log(id, action);
+  const handleModal = () => {
     if (!isLoggedIn) {
       setIsModalOpen(true);
     }
@@ -49,8 +49,14 @@ const Shop = ({ products }) => {
       }
       return flag;
     });
-    setFilteredProducts(filtered);
-  }, [filter, products]);
+    const finalFilteredProducts = filtered.filter((product) => {
+      return product.title.toLowerCase().includes(searchInput.toLowerCase());
+    });
+
+    setFilteredProducts(finalFilteredProducts);
+  }, [filter, products, searchInput]);
+
+  console.log(isLoggedIn);
 
   return (
     <>
@@ -58,9 +64,17 @@ const Shop = ({ products }) => {
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}></AuthForm>
       <main className="container p-2  w-full mx-auto  ">
-        <SmallScreenFilter setFilter={setFilter} filter={filter} />
+        <SmallScreenFilter
+          setFilter={setFilter}
+          filter={filter}
+          setSearchInput={setSearchInput}
+        />
         <div className="flex flex-col sm:flex-row mb-4 sm:pt-20 pt-lg:pt-20  h-full sm:justify-around w-[100%]">
-          <LargeScreenFilter setFilter={setFilter} filter={filter} />
+          <LargeScreenFilter
+            setFilter={setFilter}
+            filter={filter}
+            setSearchInput={setSearchInput}
+          />
           <motion.div
             key="productContainer"
             layout
@@ -73,7 +87,8 @@ const Shop = ({ products }) => {
                 <ProductCard
                   key={product.id}
                   product={product}
-                  handleCartAction={handleCartAction}
+                  handleModal={handleModal}
+                  isLoggedIn={isLoggedIn}
                 />
               ))}
           </motion.div>
