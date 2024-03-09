@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const NavBar = () => {
+const NavBar = ({ totalQuantity }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleToggleMenu = () => {
@@ -45,7 +46,10 @@ const NavBar = () => {
               to="cart"
               className="cursor-pointer py-2 text-2xl hover:bg-slate-500 font-mono"
               onClick={closeMenu}>
-              Cart
+              Cart{" "}
+              {totalQuantity > 0 && (
+                <span className="ml-1">{totalQuantity}</span>
+              )}
             </NavLink>
             <NavLink
               to="about"
@@ -76,7 +80,7 @@ const NavBar = () => {
                 to="cart"
                 className="py-2 text-xl mt-6 border rounded-lg border-cyan-50 font-mono"
                 onClick={closeMenu}>
-                Cart
+                Cart {totalQuantity > 0 && <span>{totalQuantity}</span>}{" "}
               </NavLink>
               <NavLink
                 to="about"

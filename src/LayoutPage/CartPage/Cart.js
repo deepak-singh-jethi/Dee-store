@@ -6,7 +6,6 @@ function CartLayout() {
   const { items, totalQuantity, totalValue } = useSelector(
     (state) => state.cart
   );
-  console.log(items, totalQuantity, totalValue);
   return (
     <Cart
       items={items}

@@ -10,7 +10,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart(state, action) {
-      console.log(action.payload);
       state.totalQuantity += 1;
       state.totalValue += action.payload.price;
       const newItemId = action.payload.id;
@@ -19,28 +18,28 @@ export const cartSlice = createSlice({
         state.items.push({
           ...action.payload,
           quantity: 1,
-          price: action.payload.price,
+          itemTotalPrice: action.payload.price,
         });
       } else {
         itemExist.quantity += 1;
-        itemExist.price += action.payload.price;
+        itemExist.itemTotalPrice += action.payload.price;
       }
       return state;
     },
     removeItemFromCart(state, action) {
       const itemId = action.payload.id;
-
       const itemExist = state.items.find((item) => item.id === itemId);
       if (itemExist) {
         state.totalQuantity -= 1;
         state.totalValue -= action.payload.price;
         if (itemExist.quantity === 1) {
           state.items = state.items.filter((item) => item.id !== itemId);
-        } else {
+        } else if (itemExist.quantity > 1) {
           itemExist.quantity -= 1;
-          itemExist.price -= itemExist.price;
+          itemExist.itemTotalPrice -= action.payload.price;
         }
       }
+
       return state;
     },
   },

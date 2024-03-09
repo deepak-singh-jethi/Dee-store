@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import cartActions from "../../Store/cart/cart";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, handleModal, isLoggedIn }) => {
   const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.cart);
+
+  const cartItem = items.find((item) => item.id === product.id);
+
   const handleAddToCart = (product) => {
     if (!isLoggedIn) {
       handleModal();
@@ -51,18 +56,33 @@ const ProductCard = ({ product, handleModal, isLoggedIn }) => {
           </span>
         </div>
 
-        <div className="flex justify-around">
+        <div className="flex justify-around items-center">
           <button
-            className="bg-teal-500 text-white px-4 py-2 rounded-full mr-2 hover:bg-teal-600 text-[10px] sm:text-[11px] md:text-[12px] cursor-pointer"
+            disabled={!cartItem}
+            className="bg-teal-500 text-white px-4 py-2 rounded-full mr-2 hover:bg-teal-600 text-[10px] sm:text-[11px] md:text-[12px] cursor-pointer disabled:bg-teal-700"
             onClick={() => handleRemoveFromCart(product)}>
             -
           </button>
-          <span className="text-gray-700 text-[10px] sm:text-[11px] md:text-[12px]"></span>
+          <button className="w-[40px]">
+            {cartItem && (
+              <span className="text-gray-700 text-[10px] sm:text-[11px] md:text-[12px]">
+                {cartItem.quantity}
+              </span>
+            )}
+          </button>
+
           <button
-            className="bg-teal-500 text-white px-4 py-2 rounded-full ml-2 hover:bg-teal-600 text-[10px] sm:text-[11px] md:text-[12px] cursor-pointer"
+            className="bg-teal-500 text-white px-4 py-2 rounded-full ml-2 hover:bg-teal-600 text-[10px] sm:text-[11px] md:text-[12px] cursor-pointer "
             onClick={() => handleAddToCart(product)}>
             +
           </button>
+        </div>
+        <div className="text-center mt-5 mb-1 text-red-500">
+          <Link to={`/${product.id}`}>
+            <button className="bg-blue-600 px-3 py-1 rounded-lg hover:bg-blue-500 text-white">
+              Check this product
+            </button>
+          </Link>
         </div>
       </div>
     </motion.div>

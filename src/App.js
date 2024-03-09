@@ -10,6 +10,7 @@ import HomeLayout from "./LayoutPage/HomePage/Home";
 import ShopLayout from "./LayoutPage/ShopPage/Shop";
 import AboutLayout from "./LayoutPage/AboutPage/About";
 import CartLayout from "./LayoutPage/CartPage/Cart";
+import ProductLayout from "./LayoutPage/ProductPage/Product";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,9 +20,9 @@ const router = createBrowserRouter(
       errorElement={<h1>Page not Found..</h1>}>
       <Route index element={<HomeLayout />} />
       <Route path="shop" element={<ShopLayout />} />
-
       <Route path="about" element={<AboutLayout />} />
       <Route path="cart" element={<CartLayout />} />
+      <Route path=":productId" element={<ProductLayout />} />
     </Route>
   )
 );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../Store/user/userActions";
 
 const initialFormData = {
@@ -8,6 +8,7 @@ const initialFormData = {
 };
 
 const LoginForm = ({ closeModal }) => {
+  const { userStatus } = useSelector((state) => state.user);
   const [formData, setFormData] = useState(initialFormData);
   const dispatch = useDispatch();
   const handleChange = (e) => {
@@ -17,7 +18,6 @@ const LoginForm = ({ closeModal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(formData));
-    // closeModal();
     return;
   };
 
@@ -49,6 +49,9 @@ const LoginForm = ({ closeModal }) => {
           login
         </button>
       </div>
+      {userStatus.status === "error" && (
+        <div className="text-red-500 text-sm">{userStatus.message}</div>
+      )}
     </form>
   );
 };

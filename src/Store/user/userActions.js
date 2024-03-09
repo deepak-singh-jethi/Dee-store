@@ -35,9 +35,8 @@ export const signUpUser = (user) => {
       });
 
       const data = await response.json();
-      //store user info in local storage
-      //and store user info in redux store
       localStorage.setItem("user", JSON.stringify(body));
+      console.log("signup success");
       dispatch(userActions.setUser(body));
     } catch (error) {
       dispatch(
@@ -53,32 +52,37 @@ export const signUpUser = (user) => {
 // login function
 export const loginUser = (user) => {
   return async (dispatch) => {
-    const body = {
-      username: "mor_2314",
-      password: "83r5^_",
-    };
     try {
       const response = await fetch("https://fakestoreapi.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...body }),
+        body: JSON.stringify({
+          username: "mor_2314",
+          password: "83r5^_",
+        }),
       });
-      const data = await response.json();
-      //store token in local storage
-      //store token in redux store and change the loginState
 
-      console.log(data);
-      localStorage.setItem("token", JSON.stringify(data));
+      if (!response.ok) {
+        throw new Error("Invalid username or password");
+      } else {
+        const data = await response.json();
+        localStorage.setItem("token", JSON.stringify(data));
+        dispatch(
+          userActions.setLoginInfo({
+            isLoggedIn: true,
+            token: data,
+          })
+        );
+      }
+    } catch (error) {
       dispatch(
-        userActions.setLoginInfo({
-          isLoggedIn: true,
-          token: data,
+        userActions.setStatus({
+          status: "error",
+          message: error.message,
         })
       );
-    } catch (error) {
-      console.log(error);
     }
   };
 };

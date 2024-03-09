@@ -1,10 +1,10 @@
 import React from "react";
 import NavBar from "../../Component/NavBar/NavBar";
 
-function NavBarLayout() {
+function NavBarLayout({ totalQuantity }) {
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar totalQuantity={totalQuantity}></NavBar>
     </>
   );
 }

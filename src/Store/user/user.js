@@ -24,7 +24,7 @@ const initialState = {
     isLoggedIn: false,
     token: "",
   },
-  userSignUp: {
+  userStatus: {
     status: "",
     message: "",
   },
@@ -42,14 +42,17 @@ export const userSlice = createSlice({
       return state;
     },
     setStatus: (state, action) => {
-      state.userSignUp.status = action.payload.status;
-      state.userSignUp.message = action.payload.message;
+      console.log(action.payload);
+      state.userStatus.status = action.payload.status;
+      state.userStatus.message = action.payload.message;
       return state;
     },
     setLoginInfo: (state, action) => {
-      console.log(action.payload);
       state.loginInfo.isLoggedIn = action.payload.isLoggedIn;
       state.loginInfo.token = action.payload.token;
+      state.userStatus.status = "";
+      state.userStatus.message = "";
+
       return state;
     },
   },

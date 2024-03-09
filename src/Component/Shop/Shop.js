@@ -56,8 +56,6 @@ const Shop = ({ products }) => {
     setFilteredProducts(finalFilteredProducts);
   }, [filter, products, searchInput]);
 
-  console.log(isLoggedIn);
-
   return (
     <>
       <AuthForm
