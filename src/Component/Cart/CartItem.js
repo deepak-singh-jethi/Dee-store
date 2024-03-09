@@ -10,17 +10,19 @@ const CartItem = ({ item }) => {
   const handleToggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
-  const onAddToCart = (item) => {
+
+  const onAddToCart = () => {
     dispatch(cartActions.addItemToCart(item));
   };
-  const onRemoveFromCart = (item) => {
+
+  const onRemoveFromCart = () => {
     dispatch(cartActions.removeItemFromCart(item));
   };
 
   return (
     <div className="border-b border-gray-300 overflow-hidden">
       <div
-        className="flex items-center justify-between p-4 cursor-pointer transition duration-300 hover:bg-gray-100"
+        className="flex flex-col md:flex-row items-center justify-between p-4 cursor-pointer transition duration-300 hover:bg-gray-100"
         onClick={handleToggleExpand}>
         <div className="flex items-center space-x-4">
           <img
@@ -28,22 +30,22 @@ const CartItem = ({ item }) => {
             alt={item.title}
             className="w-16 h-16 object-cover rounded"
           />
-          <AnimatePresence>
-            <div>
-              <h3 className="text-lg font-semibold">{item.title}</h3>
+          <div>
+            <h3 className="text-md md:text-lg font-semibold">{item.title}</h3>
+            <AnimatePresence>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
-                className={`text-gray-600 w-[70%] ${
+                className={`text-gray-600 w-full md:w-[70%] ${
                   isExpanded ? "" : "max-w-xs overflow-hidden"
                 }`}>
                 {isExpanded ? item.description : ""}
               </motion.p>
-            </div>
-          </AnimatePresence>
+            </AnimatePresence>
+          </div>
         </div>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 mt-2 md:mt-0">
           <p className="text-gray-700">
             Quantity: <span className="font-semibold">{item.quantity}</span>
           </p>
@@ -67,16 +69,20 @@ const CartItem = ({ item }) => {
               Item Price: &#8377;{item.price.toFixed(2)}
             </p>
             <div className="flex space-x-4">
-              <button
-                onClick={() => onAddToCart(item)}
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={onAddToCart}
                 className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 focus:outline-none transition duration-300">
                 +
-              </button>
-              <button
-                onClick={() => onRemoveFromCart(item)}
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={onRemoveFromCart}
                 className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 focus:outline-none transition duration-300">
                 -
-              </button>
+              </motion.button>
             </div>
           </motion.div>
         )}
